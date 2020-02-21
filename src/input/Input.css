@@ -1,0 +1,33 @@
+
+
+.topInput{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+    height:30px;
+}
+.bottomInput{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    height: 30px;
+    background-color: rgb(201, 201, 201);
+}
+
+#printType{
+    margin-right: 10px;
+}
+
+.searchButton{
+    border-radius: 5px;
+    border: 2px rgb(74, 159, 228) solid;
+}
+
+.searchLabel{
+    font-size: 22px;
+}
+
+.dropdown{
+    border-radius: 5px;
+}

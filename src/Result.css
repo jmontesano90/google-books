@@ -1,0 +1,28 @@
+h2{
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+}
+
+.bookContainer{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 6px;
+}
+
+.bookInfo{
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    font-size: 27px;
+}
+.description{
+    padding-top: 20px;
+    font-size: 22px;
+}
+
+.book{
+    border-bottom: 1px solid gray;
+}
