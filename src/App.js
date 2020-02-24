@@ -9,14 +9,15 @@ class App extends Component {
     super(props);
     this.state = {
       results: [],
-      searchTerm: null,
+      searchTerm: "Michael Crichton",
       printType: "All",
-      bookType: null
+      bookType: null,
+      key: 'AIzaSyD4B2Ivk5nAxAxz23kpqtvbnlO9_8ttQqI'
     };
   }
 
   componentDidMount() {
-    const search = (({searchTerm, printType, bookType}) => ({searchTerm, printType, bookType}))(this.state);
+    const search = (({searchTerm, printType, bookType, key}) => ({searchTerm, printType, bookType, key}))(this.state);
     const url ='https://www.googleapis.com/books/v1/volumes';
     const options = {
       method: 'GET',
@@ -31,17 +32,17 @@ class App extends Component {
     fetch(url, options)
       .then(res => {
         if(!res.ok) {
-          throw new Error('Something went wrong, please try again later');
+          throw new Error('Something went wrong, please try again later.');
         }
-        console.log(res.json());
-        return res.json();
+        return res;
       })
+      .then(res => res.json())
       .then(data => {
+        console.log(data);
         this.setState({
-            results: [data]
+          results: data,
+          error: null
         });
-        this.props.handleAdd(search);
-        console.log(this.state.results);
       })
       .catch(err => {
         this.setState({

@@ -4,7 +4,7 @@ import './Additional.css';
 class Additional extends Component {
   render(){
     return(
-      <div>put shit here</div>
+      <div></div>
     )
   }
 }
