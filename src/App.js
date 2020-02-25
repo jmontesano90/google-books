@@ -14,22 +14,26 @@ class App extends Component {
       bookType: null,
       key: 'AIzaSyD4B2Ivk5nAxAxz23kpqtvbnlO9_8ttQqI'
     };
+    this.setBookType = this.setBookType.bind(this);
+    this.setPrintType = this.setPrintType.bind(this);
+    this.setSearchTerm = this.setSearchTerm.bind(this);
   }
 
   componentDidMount() {
+    const filter = (null ? ("&filter=" + this.state.bookType) : ""); 
     const search = (({searchTerm, printType, bookType, key}) => ({searchTerm, printType, bookType, key}))(this.state);
-    const url ='https://www.googleapis.com/books/v1/volumes';
+    const url ='https://www.googleapis.com/books/v1/volumes?';
+    const finalUrl = url + "q=" + this.state.searchTerm + '&printType=' + this.state.printType + filter + "&key=AIzaSyD4B2Ivk5nAxAxz23kpqtvbnlO9_8ttQqI";
     const options = {
       method: 'GET',
-      body: JSON.stringify(search),
       headers: {
         "Content-Type": "application/json",
         "Authorization": "AIzaSyD4B2Ivk5nAxAxz23kpqtvbnlO9_8ttQqI"
       }
     };
 
-
-    fetch(url, options)
+    console.log(filter);
+    fetch(finalUrl, options)
       .then(res => {
         if(!res.ok) {
           throw new Error('Something went wrong, please try again later.');
@@ -62,12 +66,14 @@ class App extends Component {
       printType
     });
 
+
   }
 
   setBookType(bookType){
     this.setState({
       bookType
     });
+ 
   }
 
   render(){
