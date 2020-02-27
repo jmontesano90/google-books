@@ -136,7 +136,8 @@ class App extends Component {
 
   render(){
 
-    const results = this.state.results.map((key, index) => <Result key={index} results={this.state.results[1]}/>);
+    const results = this.state.results.map((key, index) => <Result key={index} results={this.state.results[index]}/>);
+
 
     return(
       <div className="big">

@@ -14,15 +14,22 @@ class Result extends Component {
     //   price = "$" + this.props.results.saleInfo.retailPrice.amount
     // }
 
+    
 
-    const price = (typeof this.props.results.saleInfo.retailPrice.amount==="undefined")
+
+    const price = (typeof this.props.results.saleInfo.retailPrice==="undefined")
     ? "N/a"
     : "$" + this.props.results.saleInfo.retailPrice.amount;
+
+    const imgSource = (typeof this.props.results.volumeInfo.imageLinks==="undefined")
+    ? "https://imgur.com/lYWnkH2.png"
+    : this.props.results.volumeInfo.imageLinks.thumbnail;
+
     return(
       <div className="book">
           <h2>{this.props.results.volumeInfo.title}</h2>
           <div className="bookContainer">
-            <img src={this.props.results.volumeInfo.imageLinks.thumbnail}></img>
+            <img src={imgSource}></img>
             <div className="bookInfo">
                 <div>Author: {this.props.results.volumeInfo.authors}</div>
                 <div>Price: {price}</div>
