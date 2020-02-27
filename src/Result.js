@@ -5,7 +5,19 @@ class Result extends Component {
   render(){
     console.log(this.props.results)
 
-    const price = this.props.results.saleInfo.retailPrice.amount ? this.props.results.saleInfo.retailPrice.amount : "N/a";
+    // let price = "";
+
+    // if (typeof this.props.results.saleInfo.retailPrice.amount === "undefined"){
+    //     price = "N/a"
+    // }
+    // else{
+    //   price = "$" + this.props.results.saleInfo.retailPrice.amount
+    // }
+
+
+    const price = (typeof this.props.results.saleInfo.retailPrice.amount==="undefined")
+    ? "N/a"
+    : "$" + this.props.results.saleInfo.retailPrice.amount;
     return(
       <div className="book">
           <h2>{this.props.results.volumeInfo.title}</h2>
@@ -13,7 +25,7 @@ class Result extends Component {
             <img src={this.props.results.volumeInfo.imageLinks.thumbnail}></img>
             <div className="bookInfo">
                 <div>Author: {this.props.results.volumeInfo.authors}</div>
-                <div>Price: ${price}</div>
+                <div>Price: {price}</div>
                 <div className="description">{this.props.results.volumeInfo.description}</div>
             </div>
           </div>
