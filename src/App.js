@@ -135,10 +135,7 @@ class App extends Component {
 
   render(){
 
-    const results = this
-    .props
-    .results
-    .map((key) => <Result results={this.state.results[key]}/>);
+    const results = this.state.results.map(key => <Result results={this.state.results[key]}/>);
 
     return(
       <div className="big">
