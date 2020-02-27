@@ -4,17 +4,21 @@ import Search from './Search';
 import Additional from './Additional';
 
 class Input extends Component {
+
+  checkChange(input){
+    return input === "None" ? "" : this.props.handleChange(input);
+  }
   render(){
     return(
     <div>
-        <form className="input">
+        <form className="input" onSubmit={e => { e.preventDefault(); this.props.changeSearchTerm(e.target.search.value)}}>
             <div className="topInput">
             <label className="searchLabel" htlmFor="search">Search: </label>
             <input 
                 type="text"
                 name="search"
                 placeholder="Michael Crichton"/>
-                <button className="searchButton" type="submit" onClick={e => this.props.changeSearchTerm(e.target.value)}>Search</button>
+                <button className="searchButton" type="submit" >Search</button>
             </div>
             <div className="bottomInput">
             <label htmlFor="printType">Print Type: </label>
