@@ -40,8 +40,9 @@ class App extends Component {
       .then(res => res.json())
       .then(data => {
         console.log(data);
+        const query = Object.keys(data.items).map(key => data.items[key]);
         this.setState({
-          results: data,
+          results: query,
           error: null
         });
       })
@@ -96,7 +97,7 @@ class App extends Component {
         setTimeout(() => {
           console.log("below is the results in state");
           console.log(this.state.results);
-       },300);
+       },800);
       })
       .catch(err => {
         this.setState({
@@ -135,7 +136,7 @@ class App extends Component {
 
   render(){
 
-    const results = this.state.results.map(key => <Result results={this.state.results[key]}/>);
+    const results = this.state.results.map((key, index) => <Result key={index} results={this.state.results[5]}/>);
 
     return(
       <div className="big">

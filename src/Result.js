@@ -3,15 +3,18 @@ import './Result.css';
 
 class Result extends Component {
   render(){
+    console.log(this.props.results)
+
+    const price = this.props.results.saleInfo.retailPrice.amount ? this.props.results.saleInfo.retailPrice.amount : "N/a";
     return(
       <div className="book">
-          <h2>The Dark Side of the Gym</h2>
+          <h2>{this.props.results.volumeInfo.title}</h2>
           <div className="bookContainer">
-            <img src="https://imgur.com/zExpu1e.png" height="400px"></img>
+            <img src={this.props.results.volumeInfo.imageLinks.thumbnail}></img>
             <div className="bookInfo">
-                <div>Author: Senator Palpatine</div>
-                <div>Price: your morals</div>
-                <div className="description">Have you ever been told the tale of Darth Plagius the swole?</div>
+                <div>Author: {this.props.results.volumeInfo.authors}</div>
+                <div>Price: ${price}</div>
+                <div className="description">{this.props.results.volumeInfo.description}</div>
             </div>
           </div>
 
